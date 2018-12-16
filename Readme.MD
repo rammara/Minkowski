@@ -8,3 +8,5 @@ You can use mouse to pan and zoom, double click for adding a new spacetime event
 Feel free to use this code.
 
 ![Screeshot](https://i.imgur.com/57t9uDs.png)
+
+This is a work in progress.
