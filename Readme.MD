@@ -6,3 +6,5 @@ the Minkowsky space. You can add spacetime events and also apply Lorentz transfo
 You can use mouse to pan and zoom, double click for adding a new spacetime event.
 
 Feel free to use this code.
+
+![Screeshot](https://imgur.com/57t9uDs)
