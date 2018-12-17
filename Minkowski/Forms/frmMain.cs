@@ -37,7 +37,9 @@ namespace Minkowski
 
             this.ViewPort = new RectangleF(Settings.DefaultViewportLeft, Settings.DefaultViewportTop,
                                            Settings.DefaultViewportWidth, Settings.DefaultViewportHeight);
-            
+
+            IEnumerable<SpaceTimeEvent> saved = XmlIO.LoadEvents();
+            if (null != saved) this.m_calc.AddRange(saved);
         } // frmMain constructor
 
 
@@ -47,6 +49,8 @@ namespace Minkowski
             {
                 ctl.DeleteClick -= this.Event_Deleted;
                 ctl.ValueChanged -= this.Event_Changed;
+                ctl.Enter -= this.Control_Focus;
+                ctl.Leave -= this.Control_LostFocus;
                 ctl.Dispose();
             }
             this.flowEvents.Controls.Clear();
@@ -55,6 +59,8 @@ namespace Minkowski
                 SpaceTimeEventControl ctl = new SpaceTimeEventControl(evt);
                 ctl.DeleteClick += new EventHandler(this.Event_Deleted);
                 ctl.ValueChanged += new EventHandler(this.Event_Changed);
+                ctl.Enter += new EventHandler(this.Control_Focus);
+                ctl.Leave += new EventHandler(this.Control_LostFocus);
                 this.flowEvents.Controls.Add(ctl);
             } // foreach
             this.picDisplay.Invalidate();
@@ -143,6 +149,11 @@ namespace Minkowski
                 pic.Invalidate();
             }
         } // picDisplay_MouseMove
+
+        private void picDisplay_MouseEnter(object sender, EventArgs e)
+        {
+            this.picDisplay.Focus();
+        } // picDisplay_MouseEnter
 
         private void PicDisplay_MouseWheel(object sender, System.Windows.Forms.MouseEventArgs e)
         {
@@ -446,5 +457,10 @@ namespace Minkowski
                 this.m_calc.Clear();
             }
         } // btnClear_Click
+
+        private void frmMain_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            XmlIO.SaveEvents(this.m_calc);
+        } // frmMain_FormClosed
     } // class frmMain
 } // namespace

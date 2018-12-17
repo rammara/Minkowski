@@ -30,27 +30,27 @@
         {
             this.picDisplay = new System.Windows.Forms.PictureBox();
             this.splitter = new System.Windows.Forms.SplitContainer();
+            this.pnlTools = new System.Windows.Forms.Panel();
+            this.flowEvents = new System.Windows.Forms.FlowLayoutPanel();
+            this.lblEventsTitle = new System.Windows.Forms.Label();
+            this.btnClear = new System.Windows.Forms.Button();
+            this.btnAdd = new System.Windows.Forms.Button();
             this.tblDisplayContainer = new System.Windows.Forms.TableLayoutPanel();
             this.pnlControls = new System.Windows.Forms.Panel();
+            this.btnReset = new System.Windows.Forms.Button();
             this.trackVelocity = new System.Windows.Forms.TrackBar();
             this.lblCTitle = new System.Windows.Forms.Label();
             this.txtVelocity = new System.Windows.Forms.TextBox();
             this.lblVelosityTitle = new System.Windows.Forms.Label();
-            this.btnReset = new System.Windows.Forms.Button();
-            this.pnlTools = new System.Windows.Forms.Panel();
-            this.btnAdd = new System.Windows.Forms.Button();
-            this.btnClear = new System.Windows.Forms.Button();
-            this.lblEventsTitle = new System.Windows.Forms.Label();
-            this.flowEvents = new System.Windows.Forms.FlowLayoutPanel();
             ((System.ComponentModel.ISupportInitialize)(this.picDisplay)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitter)).BeginInit();
             this.splitter.Panel1.SuspendLayout();
             this.splitter.Panel2.SuspendLayout();
             this.splitter.SuspendLayout();
+            this.pnlTools.SuspendLayout();
             this.tblDisplayContainer.SuspendLayout();
             this.pnlControls.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackVelocity)).BeginInit();
-            this.pnlTools.SuspendLayout();
             this.SuspendLayout();
             // 
             // picDisplay
@@ -66,6 +66,7 @@
             this.picDisplay.Paint += new System.Windows.Forms.PaintEventHandler(this.picDisplay_Paint);
             this.picDisplay.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.picDisplay_MouseDoubleClick);
             this.picDisplay.MouseDown += new System.Windows.Forms.MouseEventHandler(this.picDisplay_MouseDown);
+            this.picDisplay.MouseEnter += new System.EventHandler(this.picDisplay_MouseEnter);
             this.picDisplay.MouseMove += new System.Windows.Forms.MouseEventHandler(this.picDisplay_MouseMove);
             this.picDisplay.MouseUp += new System.Windows.Forms.MouseEventHandler(this.picDisplay_MouseUp);
             this.picDisplay.MouseWheel += new System.Windows.Forms.MouseEventHandler(this.PicDisplay_MouseWheel);
@@ -88,6 +89,58 @@
             this.splitter.Size = new System.Drawing.Size(904, 645);
             this.splitter.SplitterDistance = 295;
             this.splitter.TabIndex = 1;
+            // 
+            // pnlTools
+            // 
+            this.pnlTools.Controls.Add(this.flowEvents);
+            this.pnlTools.Controls.Add(this.lblEventsTitle);
+            this.pnlTools.Controls.Add(this.btnClear);
+            this.pnlTools.Controls.Add(this.btnAdd);
+            this.pnlTools.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnlTools.Location = new System.Drawing.Point(0, 0);
+            this.pnlTools.Name = "pnlTools";
+            this.pnlTools.Size = new System.Drawing.Size(295, 645);
+            this.pnlTools.TabIndex = 0;
+            // 
+            // flowEvents
+            // 
+            this.flowEvents.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.flowEvents.AutoScroll = true;
+            this.flowEvents.Location = new System.Drawing.Point(12, 70);
+            this.flowEvents.Name = "flowEvents";
+            this.flowEvents.Size = new System.Drawing.Size(271, 432);
+            this.flowEvents.TabIndex = 4;
+            // 
+            // lblEventsTitle
+            // 
+            this.lblEventsTitle.AutoSize = true;
+            this.lblEventsTitle.Location = new System.Drawing.Point(9, 54);
+            this.lblEventsTitle.Name = "lblEventsTitle";
+            this.lblEventsTitle.Size = new System.Drawing.Size(97, 13);
+            this.lblEventsTitle.TabIndex = 3;
+            this.lblEventsTitle.Text = "Spacetime evemts:";
+            // 
+            // btnClear
+            // 
+            this.btnClear.Location = new System.Drawing.Point(174, 12);
+            this.btnClear.Name = "btnClear";
+            this.btnClear.Size = new System.Drawing.Size(75, 23);
+            this.btnClear.TabIndex = 2;
+            this.btnClear.Text = "Clear";
+            this.btnClear.UseVisualStyleBackColor = true;
+            this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
+            // 
+            // btnAdd
+            // 
+            this.btnAdd.Location = new System.Drawing.Point(12, 12);
+            this.btnAdd.Name = "btnAdd";
+            this.btnAdd.Size = new System.Drawing.Size(75, 23);
+            this.btnAdd.TabIndex = 0;
+            this.btnAdd.Text = "Add";
+            this.btnAdd.UseVisualStyleBackColor = true;
+            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
             // tblDisplayContainer
             // 
@@ -116,6 +169,16 @@
             this.pnlControls.Name = "pnlControls";
             this.pnlControls.Size = new System.Drawing.Size(599, 122);
             this.pnlControls.TabIndex = 1;
+            // 
+            // btnReset
+            // 
+            this.btnReset.Location = new System.Drawing.Point(79, 43);
+            this.btnReset.Name = "btnReset";
+            this.btnReset.Size = new System.Drawing.Size(58, 25);
+            this.btnReset.TabIndex = 4;
+            this.btnReset.Text = "Reset";
+            this.btnReset.UseVisualStyleBackColor = true;
+            this.btnReset.Click += new System.EventHandler(this.btnReset_Click);
             // 
             // trackVelocity
             // 
@@ -162,68 +225,6 @@
             this.lblVelosityTitle.TabIndex = 0;
             this.lblVelosityTitle.Text = "Velocity:";
             // 
-            // btnReset
-            // 
-            this.btnReset.Location = new System.Drawing.Point(79, 43);
-            this.btnReset.Name = "btnReset";
-            this.btnReset.Size = new System.Drawing.Size(58, 25);
-            this.btnReset.TabIndex = 4;
-            this.btnReset.Text = "Reset";
-            this.btnReset.UseVisualStyleBackColor = true;
-            this.btnReset.Click += new System.EventHandler(this.btnReset_Click);
-            // 
-            // pnlTools
-            // 
-            this.pnlTools.Controls.Add(this.flowEvents);
-            this.pnlTools.Controls.Add(this.lblEventsTitle);
-            this.pnlTools.Controls.Add(this.btnClear);
-            this.pnlTools.Controls.Add(this.btnAdd);
-            this.pnlTools.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnlTools.Location = new System.Drawing.Point(0, 0);
-            this.pnlTools.Name = "pnlTools";
-            this.pnlTools.Size = new System.Drawing.Size(295, 645);
-            this.pnlTools.TabIndex = 0;
-            // 
-            // btnAdd
-            // 
-            this.btnAdd.Location = new System.Drawing.Point(12, 12);
-            this.btnAdd.Name = "btnAdd";
-            this.btnAdd.Size = new System.Drawing.Size(75, 23);
-            this.btnAdd.TabIndex = 0;
-            this.btnAdd.Text = "Add";
-            this.btnAdd.UseVisualStyleBackColor = true;
-            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
-            // 
-            // btnClear
-            // 
-            this.btnClear.Location = new System.Drawing.Point(174, 12);
-            this.btnClear.Name = "btnClear";
-            this.btnClear.Size = new System.Drawing.Size(75, 23);
-            this.btnClear.TabIndex = 2;
-            this.btnClear.Text = "Clear";
-            this.btnClear.UseVisualStyleBackColor = true;
-            this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
-            // 
-            // lblEventsTitle
-            // 
-            this.lblEventsTitle.AutoSize = true;
-            this.lblEventsTitle.Location = new System.Drawing.Point(9, 54);
-            this.lblEventsTitle.Name = "lblEventsTitle";
-            this.lblEventsTitle.Size = new System.Drawing.Size(97, 13);
-            this.lblEventsTitle.TabIndex = 3;
-            this.lblEventsTitle.Text = "Spacetime evemts:";
-            // 
-            // flowEvents
-            // 
-            this.flowEvents.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.flowEvents.AutoScroll = true;
-            this.flowEvents.Location = new System.Drawing.Point(12, 70);
-            this.flowEvents.Name = "flowEvents";
-            this.flowEvents.Size = new System.Drawing.Size(271, 432);
-            this.flowEvents.TabIndex = 4;
-            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -234,18 +235,19 @@
             this.MinimumSize = new System.Drawing.Size(800, 600);
             this.Name = "frmMain";
             this.Text = "Minkowski Diagrams";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.frmMain_FormClosed);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.frmMain_KeyDown);
             ((System.ComponentModel.ISupportInitialize)(this.picDisplay)).EndInit();
             this.splitter.Panel1.ResumeLayout(false);
             this.splitter.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitter)).EndInit();
             this.splitter.ResumeLayout(false);
+            this.pnlTools.ResumeLayout(false);
+            this.pnlTools.PerformLayout();
             this.tblDisplayContainer.ResumeLayout(false);
             this.pnlControls.ResumeLayout(false);
             this.pnlControls.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackVelocity)).EndInit();
-            this.pnlTools.ResumeLayout(false);
-            this.pnlTools.PerformLayout();
             this.ResumeLayout(false);
 
         }

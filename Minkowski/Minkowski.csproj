@@ -65,6 +65,7 @@
     <Compile Include="Code\Calc.cs" />
     <Compile Include="Code\SpaceTimeEvent.cs" />
     <Compile Include="Code\Settings.cs" />
+    <Compile Include="Code\XmlIO.cs" />
     <Compile Include="Controls\SpaceTimeEventControl.cs">
       <SubType>UserControl</SubType>
     </Compile>

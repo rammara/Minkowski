@@ -43,6 +43,12 @@ namespace Minkowski.Code
             OnCollectionChanged();
         } // Add
 
+        public void AddRange(IEnumerable<SpaceTimeEvent> events)
+        {
+            this.m_objList.AddRange(events);
+            OnCollectionChanged();
+        } // AddRange
+
         public void Delete(SpaceTimeEvent evt)
         {
             this.m_objList.Remove(evt);
